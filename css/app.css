@@ -1,0 +1,1569 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,200&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+/* format text */
+h1 {
+  font-size: 2.8rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+h6 {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+p {
+  font-weight: 200;
+  font-size: 1rem;
+}
+
+/* Slider image */
+.slider-container-image {
+  width: 100%; /* Sesuaikan dengan lebar slider */
+  height: 100vh; /* Sesuaikan dengan tinggi slider */
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-image {
+  display: flex;
+  transition: transform 1.3s ease-in-out;
+  position: absolute;
+  z-index: 1;
+}
+
+.slider-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.slider-overlay {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.header-box {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.header-box h1 {
+  color: white;
+  line-height: 3rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #303030;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  margin-top: 1rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+::placeholder {
+  color: #7d858d;
+  font-weight: 200;
+}
+
+.form-input:focus {
+  color: #303030;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.button {
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #4ba3f2;
+  border-radius: 0.25rem;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+}
+
+.button:hover {
+  color: #fff;
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+
+.button:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+}
+
+.button.search-button {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  text-decoration: none;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+}
+/* Akhir slider image */
+
+/* Navbar */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 6rem;
+  background-color: white;
+  position: sticky;
+  z-index: 9999;
+  top: 0;
+  transition: background-color 0.3s ease;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo img {
+  height: 1.2rem;
+  margin-right: 0.5rem;
+}
+
+.logo p {
+  font-size: 1.1rem;
+  color: #4ba3f2;
+  font-weight: 500;
+}
+
+.navbar-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 500px;
+}
+
+.navbar-menu a {
+  color: #303030;
+  font-size: 0.9rem;
+  font-weight: 200;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.navbar-menu a:hover {
+  padding: 0.25rem 1rem;
+  background-color: #4ba3f2;
+  border-radius: 0.25rem;
+  color: white;
+}
+
+.navbar-container .hamburger {
+  display: none;
+  justify-content: center;
+  flex-direction: column;
+  gap: 3px;
+  cursor: pointer;
+  width: 20px;
+}
+
+.navbar-container .hamburger .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #4ba3f2;
+  transition: 0.2s ease-in-out;
+}
+
+.navbar-container .hamburger .bar.bar-putih {
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+}
+
+.navbar-container .hamburger:hover .bar {
+  background-color: #0069d9;
+}
+/* Akhir navbar */
+
+/* Property */
+.property-container {
+  padding: 4rem 6rem;
+}
+
+.property-container a {
+  text-decoration: none;
+}
+
+.property-container h2 {
+  color: #4ba3f2;
+  text-align: center;
+}
+
+.card-box {
+  max-width: 100%;
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-between;
+  gap: 3rem;
+}
+
+.card {
+  width: 22rem;
+  box-sizing: border-box;
+  background-color: #0069d9;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;
+}
+
+.property-content-1 {
+  width: 100%;
+  height: 15rem;
+}
+
+.card-overlay {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  transition: 0.2s;
+}
+
+.price-tag {
+  position: absolute;
+  z-index: 1;
+  padding: 1rem;
+  bottom: 0;
+  opacity: 1;
+  transition: 0.2s;
+}
+
+.price-tag h3 {
+  color: #4ba3f2;
+}
+
+.price-tag h5 {
+  color: white;
+}
+
+.property-content-1:hover .card-overlay,
+.property-content-1:hover .price-tag {
+  opacity: 0;
+}
+
+.property-content-2 {
+  background-color: white;
+  padding: 1rem 1rem;
+}
+
+.property-content-2 h4 {
+  color: #303030;
+}
+
+.addres-box {
+  display: flex;
+  align-items: center;
+}
+
+.addres-box i,
+h5 {
+  color: #4ba3f2;
+  margin-right: 0.5rem;
+}
+
+.property-content-3 {
+  background-color: #e5e5e5;
+  padding: 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.detail-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.detail-box h5 {
+  color: #303030;
+}
+
+.detail-box h6 {
+  color: #303030;
+}
+
+.lihat-selengkapnya-box {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  text-decoration: none;
+  margin-top: 2rem;
+}
+
+.lihat-selengkapnya-box p,
+i {
+  color: #8c9197;
+  font-size: 0.9rem;
+}
+
+.lihat-selengkapnya-box i {
+  margin-left: 0.3rem;
+}
+/* Akhir property */
+
+/* Mengapa memilih kami */
+.why-container {
+  margin-top: 1.5rem;
+  background-image: url("../image/hero4.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.why-boxs {
+  width: 60%;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.why-box {
+  padding: 4rem 3rem 4rem 6rem;
+}
+
+.why-box h2 {
+  color: white;
+  text-align: start;
+}
+
+.why-contents {
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.why-contents .bg-icon {
+  background-color: white;
+  height: 50px;
+  min-width: 50px;
+  margin-right: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.bg-icon i {
+  color: #4ba3f2;
+  font-size: 1.7rem;
+}
+
+.why-content h3,
+p {
+  color: white;
+}
+/* Akhir mengapa memilih kami */
+
+/* Slider review */
+.container-review {
+  margin-top: 4rem;
+  padding: 0 6rem;
+}
+
+.container-review h2 {
+  margin-bottom: 2.5rem;
+  color: #4ba3f2;
+  text-align: center;
+}
+
+.slider-container-review {
+  width: 100%;
+  min-height: 13rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider-review {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slider-review.active {
+  opacity: 1;
+}
+
+.slider-review img {
+  width: 5rem;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.comment {
+  font-style: italic;
+  color: #303030;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.author {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #303030;
+}
+/* Akhir slider review */
+
+/* Alur pembelian */
+.container-alur {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+  padding: 0rem 6rem;
+}
+
+.container-alur h2 {
+  color: #4ba3f2;
+  text-align: center;
+}
+.alur-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.5rem;
+}
+
+.alur-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.alur-detail img {
+  width: 8rem;
+  border-radius: 50%;
+  margin-bottom: 2rem;
+}
+
+.alur-detail p {
+  color: #303030;
+}
+/* Akhir alur pembelian */
+
+/* Footer */
+.footer-container {
+  width: 100%;
+  background-color: #303030;
+  padding: 4rem 6rem 2rem 6rem;
+}
+
+.footer-boxs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-box {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+}
+
+.footer-box.bayview {
+  width: 22rem;
+}
+
+.logo-footer {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.logo-footer img {
+  height: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.footer-box p {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  margin-top: 1rem;
+}
+
+.footer-box h4 {
+  color: #4ba3f2;
+}
+
+.footer-menu {
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  margin-top: 1rem;
+}
+
+.footer-menu a {
+  color: white;
+  font-size: 0.8rem;
+  text-decoration: none;
+  margin-top: 0.5rem;
+}
+
+.footer-container hr {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-container p {
+  font-size: 0.8rem;
+}
+/* Akhir footer */
+
+/* About me */
+
+.judul-halaman {
+  padding: 4rem 6rem 0 6rem;
+}
+
+.judul-halaman h2 {
+  color: #4ba3f2;
+}
+
+.about-container {
+  padding: 2rem 6rem 4rem 6rem;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  grid-template-areas: "about-box-1 about-box-2";
+  gap: 4rem;
+}
+
+.about-box-1 p {
+  color: #303030;
+  margin-bottom: 1rem;
+}
+
+.about-box-2 {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.about-box-2 img {
+  width: 25rem;
+}
+/* Akhir about me */
+
+/* Contact */
+.contact-container {
+  padding: 2rem 6rem 4rem 6rem;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-template-areas: "contact-box-1 contact-box-2";
+  gap: 4rem;
+}
+
+.contact-box-1 {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.contact-box-1 img {
+  width: 25rem;
+}
+
+.email-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-area: "name email" "phone subjek";
+  gap: 0 1rem;
+}
+
+.button.email-button {
+  margin-top: 1rem;
+}
+/* Akhir contact */
+
+/* Agent */
+.agent-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+/* Akhir agent */
+
+/* Detail properti */
+.detail-container {
+  padding: 4rem 6rem;
+}
+.header-name {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2.5rem;
+}
+
+.header-name i {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4ba3f2;
+  margin-right: 1.5rem;
+}
+
+.header-name h2 {
+  color: #4ba3f2;
+  margin: 0;
+}
+
+p.status-property {
+  width: 10rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #4ba3f2;
+  border-radius: 0.25rem;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.detail-box-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+
+.detail-box-1 h3 {
+  font-size: 1.8rem;
+}
+
+.detail-box-1 h3.price {
+  color: #4ba3f2;
+  font-weight: bold;
+}
+
+.detail-box-2 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-addres-box {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 40%;
+}
+
+.detail-addres-box i,
+h5 {
+  font-size: 1rem;
+  color: #4ba3f2;
+}
+.detail-addres-box i {
+  margin-right: 0.5rem;
+}
+
+.detail-box-2 p {
+  color: #303030;
+  font-weight: 400;
+}
+.detail-box-3 {
+  background-color: #e5e5e5;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.detail-boxs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-boxs h5 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.detail-boxs h6 {
+  font-size: 1.2rem;
+}
+
+.description h3 {
+  font-size: 1.8rem;
+  margin-top: 2rem;
+}
+
+.description p {
+  font-size: 1rem;
+  color: #303030;
+}
+
+.contact-agent h3 {
+  font-size: 1.8rem;
+  margin-top: 2rem;
+}
+.detail-contact-box {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.contact-agent img {
+  width: 15rem;
+}
+
+.detail-contact {
+  margin-left: 1rem;
+}
+
+.detail-contact h4 {
+  color: #4ba3f2;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.detail-contact h5 {
+  color: #303030;
+  font-size: 1rem;
+  font-weight: 200;
+}
+
+a.whatsapp {
+  padding: 0.5rem;
+  width: 10rem;
+  color: #fff;
+  background-color: #4fce5d;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+
+a.whatsapp:hover {
+  background-color: #20d535;
+}
+
+a.whatsapp i {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  color: #fff;
+}
+
+a.whatsapp p {
+  margin-bottom: 0;
+}
+/* Akhir detail properti */
+
+/* Carousel */
+.slides {
+  width: 100%;
+  position: relative;
+}
+
+.slides .slide {
+  display: none;
+}
+
+.slides .slide img {
+  width: 100%;
+  height: 35rem;
+  object-fit: cover;
+  object-position: center;
+  animation-name: fade;
+  animation-duration: 1s;
+}
+
+.slides .navigation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.slides .navigation .prev,
+.slides .navigation .next {
+  cursor: pointer;
+  padding: 16px;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  background: rgba(0, 0, 0, 0.2);
+  user-select: none;
+  transition: 0.6s ease;
+}
+
+.slides .navigation .prev:hover,
+.slides .navigation .next:hover {
+  background: rgba(0, 0, 0, 1);
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Akhir carousel */
+
+@media (max-width: 1280px) {
+  .slider-container-image {
+    height: 100vh; /* Sesuaikan dengan tinggi slider */
+  }
+
+  .slider-image img {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .slider-overlay {
+    height: 100vh;
+  }
+
+  .card-box {
+    gap: 2rem;
+  }
+
+  .card {
+    width: 21rem;
+  }
+}
+
+@media (max-width: 1120px) {
+  .card-box {
+    grid-template-columns: auto auto auto;
+    gap: 2rem;
+  }
+
+  .card {
+    width: 19rem;
+  }
+}
+
+@media (max-width: 992px) {
+  /* Slider image */
+  .slider-container-image {
+    height: 50vh; /* Sesuaikan dengan tinggi slider */
+  }
+
+  .slider-image img {
+    width: 100%;
+    height: 50vh;
+  }
+
+  .slider-overlay {
+    height: 50vh;
+  }
+
+  .header-box {
+    height: 50vh;
+  }
+
+  /* Navbar */
+  .navbar-container {
+    padding: 1rem 2rem;
+  }
+
+  .navbar-menu {
+    width: 400px;
+  }
+
+  /* Property */
+  .property-container {
+    padding: 3rem 2rem;
+  }
+
+  .card {
+    width: 22rem;
+  }
+
+  .card-box {
+    grid-template-columns: auto auto;
+    gap: 3rem;
+  }
+
+  .why-boxs {
+    width: 70%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .why-box {
+    padding: 3rem 2rem 3rem 2rem;
+  }
+
+  /* Slider review */
+  .container-review {
+    margin-top: 3rem;
+    padding: 0 2rem;
+  }
+
+  /* Alur pembelian */
+  .container-alur {
+    margin-top: 3rem;
+    padding: 0rem 2rem;
+  }
+
+  /* Footer */
+  .footer-container {
+    width: 100%;
+    background-color: #303030;
+    padding: 3rem 2rem 2rem 2rem;
+  }
+
+  /* About me */
+  .about-container {
+    padding: 2rem 2rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "about-box-2"
+      "about-box-1";
+    gap: 2rem;
+  }
+
+  .judul-halaman {
+    padding: 3rem 2rem 0 2rem;
+  }
+
+  .judul-halaman h2 {
+    text-align: center;
+  }
+
+  .about-box-1 {
+    grid-row: 2;
+  }
+
+  .about-box-2 {
+    grid-row: 1;
+    justify-content: center;
+  }
+
+  .about-box-2 img {
+    width: 30rem;
+  }
+
+  /* Contact */
+  .contact-container {
+    padding: 2rem 2rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "contact-box-1"
+      "contact-box-2";
+    gap: 2rem;
+  }
+
+  .contact-box-1 {
+    justify-content: center;
+  }
+
+  .contact-box-1 img {
+    width: 30rem;
+  }
+
+  .button.email-button {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1rem;
+  }
+
+  /* Detail properti */
+  .detail-container {
+    padding: 3rem 2rem;
+  }
+}
+
+@media (max-width: 820px) {
+  .card-box {
+    gap: 2rem;
+  }
+
+  .card {
+    width: 20.5rem;
+  }
+
+  /* Slider image */
+  .slider-container-image {
+    height: 50vh; /* Sesuaikan dengan tinggi slider */
+  }
+
+  .slider-image img {
+    width: 100%;
+    height: 50vh;
+  }
+
+  .slider-overlay {
+    height: 50vh;
+  }
+
+  .header-box {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 780px) {
+  .slider-image img {
+    width: 100%;
+    height: 50vh;
+  }
+
+  .slider-overlay {
+    height: 50vh;
+  }
+
+  .header-box {
+    height: 50vh;
+  }
+}
+
+@media (max-width: 450px) {
+  /* format text */
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+
+  h5 {
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  h6 {
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  p {
+    font-weight: 200;
+    font-size: 1rem;
+  }
+
+  /* Slider image */
+  .slider-container-image {
+    height: 60vh; /* Sesuaikan dengan tinggi slider */
+  }
+
+  .slider-image img {
+    width: 100%;
+    height: 60vh;
+  }
+
+  .slider-overlay {
+    height: 60vh;
+  }
+
+  .header-box {
+    height: 60vh;
+    padding: 1rem;
+  }
+
+  .form-input {
+    font-size: 0.9rem;
+  }
+
+  .button {
+    font-size: 0.9rem;
+  }
+
+  /* Navbar */
+  .navbar-container {
+    width: 100%;
+    padding: 1rem 1rem;
+    background-color: rgba(0, 0, 0, 0);
+    position: fixed;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .logo img {
+    height: 1.4rem;
+    display: none;
+  }
+
+  .logo p {
+    font-size: 1.1rem;
+    display: none;
+  }
+
+  .navbar-menu a {
+    font-size: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .navbar-menu a:hover {
+    padding: 0.25rem 1rem;
+    background-color: #4ba3f2;
+    border-radius: 0.25rem;
+    color: white;
+  }
+
+  .navbar-container .hamburger {
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-container .hamburger.active .bar:nth-child(1) {
+    width: 20px;
+    background-color: #4ba3f2;
+  }
+
+  .navbar-container .hamburger.active .bar:nth-child(2) {
+    width: 15px;
+    background-color: #4ba3f2;
+  }
+
+  .navbar-container .hamburger.active .bar:nth-child(3) {
+    width: 10px;
+    background-color: #4ba3f2;
+  }
+
+  .navbar-container .navbar-menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    padding: 3rem 0;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    z-index: -1;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;
+  }
+
+  .navbar-container .navbar-menu.active {
+    top: 0px;
+  }
+
+  .navbar-fix {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+  }
+
+  /* Property */
+  .property-container {
+    padding: 1.5rem 1rem 1rem 1rem;
+  }
+
+  .card-box {
+    grid-template-columns: auto auto;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .card {
+    width: 11.5rem;
+  }
+
+  .property-content-1 {
+    width: 100%;
+    height: 8rem;
+  }
+
+  .price-tag {
+    padding: 0.5rem;
+  }
+
+  .price-tag h3 {
+    /* color: #fff; */
+    background-color: #4ba3f2;
+    color: #fff;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.2rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+  }
+
+  .price-tag h5 {
+    display: none;
+  }
+
+  .property-content-2 {
+    background-color: white;
+    padding: 0.5rem 0.5rem;
+  }
+
+  .property-content-3 {
+    display: none;
+  }
+
+  .lihat-selengkapnya-box {
+    margin-top: 1rem;
+  }
+
+  /* Why */
+  .why-boxs {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .why-box {
+    padding: 2rem 1rem 1rem 1rem;
+  }
+
+  .why-box h2 {
+    text-align: center;
+  }
+
+  .why-box p {
+    font-size: 0.9rem;
+  }
+
+  .why-contents {
+    margin-top: 1.5rem;
+  }
+
+  .why-contents .bg-icon {
+    height: 40px;
+    min-width: 40px;
+    margin-right: 1rem;
+  }
+
+  .bg-icon i {
+    font-size: 1.2rem;
+  }
+
+  /* Slider review */
+  .container-review {
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
+
+  .slider-container-review {
+    min-height: 21rem;
+  }
+
+  .comment {
+    margin-bottom: 0.9rem;
+  }
+
+  .author {
+    font-size: 0.8rem;
+  }
+
+  /* Alur pembelian */
+  .container-alur {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 0rem 1rem;
+  }
+
+  .alur-box {
+    flex-direction: column;
+    margin-top: 0;
+  }
+
+  .alur-detail {
+    flex-direction: column;
+  }
+  .alur-detail img {
+    width: 8rem;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+  }
+
+  .alur-detail p {
+    font-size: 0.9rem;
+  }
+
+  /* Footer */
+  .footer-container {
+    width: 100%;
+    background-color: #303030;
+    padding: 2rem 1rem 2rem 1rem;
+  }
+
+  .footer-box.bayview {
+    width: 15rem;
+  }
+
+  .footer-box.tautan-langsung {
+    display: none;
+  }
+
+  /* About me */
+  .about-container {
+    padding: 1.5rem 2rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "about-box-2"
+      "about-box-1";
+    gap: 2rem;
+  }
+
+  .judul-halaman {
+    padding: 1rem 1rem 0 1rem;
+  }
+
+  .judul-halaman h2 {
+    text-align: center;
+  }
+
+  .about-box-1 {
+    grid-row: 2;
+  }
+
+  .about-box-1 p {
+    font-size: 0.9rem;
+  }
+
+  .about-box-2 {
+    grid-row: 1;
+    justify-content: center;
+  }
+
+  .about-box-2 img {
+    width: 20rem;
+  }
+
+  /* Contact */
+  .contact-container {
+    padding: 1.5rem 2rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "contact-box-1"
+      "contact-box-2";
+    gap: 2rem;
+  }
+
+  .contact-box-1 {
+    justify-content: center;
+  }
+
+  .contact-box-1 img {
+    width: 20rem;
+  }
+
+  .button.email-button {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.6rem 1rem;
+  }
+
+  /* Detail properti */
+  .detail-container {
+    padding: 2rem 1rem;
+  }
+
+  /* Carousel */
+  .slides .slide img {
+    height: 20rem;
+  }
+
+  .header-name {
+    margin-bottom: 2rem;
+  }
+
+  .header-name i {
+    font-size: 1.7rem;
+    margin-right: 0.5rem;
+  }
+
+  .detail-box-1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .detail-box-1 h3 {
+    font-size: 1.4rem;
+  }
+
+  .detail-addres-box {
+    width: 90%;
+  }
+
+  .detail-addres-box i,
+  h5 {
+    font-size: 0.9rem;
+  }
+
+  .detail-box-2 p {
+    font-size: 0.9rem;
+  }
+
+  .detail-box-3 {
+    padding: 1rem 0.5rem;
+    margin-top: 2rem;
+    justify-content: space-between;
+  }
+
+  .detail-boxs h5 {
+    font-size: 1.5rem;
+  }
+
+  .detail-boxs h6 {
+    font-size: 0.9rem;
+  }
+
+  .description h3 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .description p {
+    font-size: 0.9rem;
+  }
+
+  .contact-agent h3 {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+  }
+
+  .detail-contact-box {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-top: 0.5rem;
+  }
+
+  .contact-agent img {
+    width: 9rem;
+  }
+
+  .contact-agent h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .contact-agent h5 {
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .card {
+    width: 11.2rem;
+  }
+
+  .card-box {
+    grid-template-columns: auto auto;
+    gap: 1rem;
+  }
+
+  .footer-box.bayview {
+    width: 12rem;
+  }
+}
+
+@media (max-width: 395px) {
+  .card {
+    width: 10.5rem;
+  }
+
+  .card-box {
+    grid-template-columns: auto auto;
+    gap: 1rem;
+  }
+
+  .footer-box.bayview {
+    width: 11rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .card {
+    width: 10.2rem;
+  }
+
+  .card-box {
+    grid-template-columns: auto auto;
+    gap: 1rem;
+  }
+
+  .about-box-2 img {
+    width: 16rem;
+  }
+
+  .contact-box-1 img {
+    width: 16rem;
+  }
+
+  .slider-container-review {
+    min-height: 23rem;
+  }
+
+  .footer-box.bayview {
+    width: 10rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .card {
+    width: 9.7rem;
+  }
+
+  .card-box {
+    grid-template-columns: auto auto;
+    gap: 1rem;
+  }
+}
