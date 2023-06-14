@@ -1,6 +1,0 @@
-name: Deploy to VPS via SSH
-
-on:
-  push:
-    branches:
-      - master
