@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: May 28, 2023 at 11:00 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Host: localhost
+-- Generation Time: Jun 13, 2023 at 10:06 PM
+-- Server version: 8.0.24
+-- PHP Version: 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,18 +28,18 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `Id_admin` int(11) NOT NULL,
-  `Username` varchar(50) NOT NULL,
-  `Password` varchar(15) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_admin` int NOT NULL COMMENT 'Primary key',
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Username untuk masuk ke admin panel',
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Password untuk masuk ke admin panel'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`Id_admin`, `Username`, `Password`) VALUES
-(1, 'Lunar', 'Lunar@123'),
-(2, 'Yuni', 'Yuni1234');
+INSERT INTO `admin` (`id_admin`, `username`, `password`) VALUES
+(2, 'admin', '$2y$10$yCwL1Nw8aDFSsnOqQq3aCOCh5itm50MK.84rKg1MgNBLB.Dl4ez6u'),
+(6, 'kevin', '$2y$10$FfiaJ3DIsfsU9htkbBhBbO9szUw3x7DJAMnrBGRSnzK8PS39XRuvS');
 
 -- --------------------------------------------------------
 
@@ -48,25 +48,78 @@ INSERT INTO `admin` (`Id_admin`, `Username`, `Password`) VALUES
 --
 
 CREATE TABLE `agen` (
-  `Id_agen` int(11) NOT NULL,
-  `Nama_agen` varchar(50) NOT NULL,
-  `Jenis_kelamin` varchar(50) NOT NULL,
-  `umur` int(11) NOT NULL,
-  `Alamat_agen` varchar(50) NOT NULL,
-  `No_telp_agen` varchar(50) NOT NULL,
-  `Email` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_agent` int NOT NULL COMMENT 'Primary key',
+  `nama` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nama agen',
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Email agen',
+  `umur` int NOT NULL COMMENT 'Umur agen',
+  `jenis_kelamin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Jenis kelamin',
+  `alamat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'alamat agen',
+  `no_telp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nomor telepon agen',
+  `gambar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Foto agen'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `agen`
 --
 
-INSERT INTO `agen` (`Id_agen`, `Nama_agen`, `Jenis_kelamin`, `umur`, `Alamat_agen`, `No_telp_agen`, `Email`) VALUES
-(1, 'Ahmad', 'Laki-Laki', 23, 'Rungkut, Surabaya', '089657423122', 'Ahmad123@gmail.com'),
-(2, 'Lucky', 'Laki-Laki', 22, 'Kalirejo, Surabaya', '085634478653', 'Lucky123@gmail.com'),
-(3, 'Feby', 'Perempuan', 22, 'Rungkut, Surabaya', '085653678876', 'Feby123@gmail.com'),
-(4, 'Fahri', 'Laki-Laki', 25, 'Rungkut, Surabaya', '089636823122', 'Fahri123@gmail.com'),
-(5, 'Dinda', 'Perempuan', 22, 'Kaliasri, Surabaya', '085432766584', 'Dinda123@gmail.com');
+INSERT INTO `agen` (`id_agent`, `nama`, `email`, `umur`, `jenis_kelamin`, `alamat`, `no_telp`, `gambar`) VALUES
+(4, 'Daren Salim', 'darensalim@gmail.com', 25, 'Perempuan', 'Jl. Sekar Putih, Surabaya, Jawa Timur', '083174908398', '0.01490300 1685865665.jpg'),
+(6, 'Josep Martin', 'josepmartin@gmail.com', 23, 'Laki-laki', 'Jl. Mawar Merah No.10 Surabaya, Jawa Timur', '083174908398', '0.70359700 1685612778.jpg'),
+(7, 'Gabriella Ganiveive', 'gabrelaganvei@gmail.com', 24, 'Perempuan', 'Jl. Tanah Merah No.05 Sidoarjo, Jawa Timur', '083174908398', '0.33681800 1685614529.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gambar_properti`
+--
+
+CREATE TABLE `gambar_properti` (
+  `id_gambar_properti` int NOT NULL COMMENT 'Primary key',
+  `id_properti` int NOT NULL COMMENT 'Foreign key ke tabel properti',
+  `gambar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Gambar properti'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `gambar_properti`
+--
+
+INSERT INTO `gambar_properti` (`id_gambar_properti`, `id_properti`, `gambar`) VALUES
+(6, 2, '0.34068000 1685834707.jpg'),
+(7, 2, '0.35311100 1685834707.jpg'),
+(9, 2, '0.37937200 1685834707.jpg'),
+(14, 4, '0.59744400 1685837063.jpg'),
+(16, 5, '0.28426700 1685837404.jpg'),
+(17, 4, '0.21564100 1685837443.jpg'),
+(18, 5, '0.53719900 1685837466.jpg'),
+(19, 4, '0.95267300 1685837495.jpg'),
+(20, 4, '0.95889200 1685837495.jpg'),
+(21, 5, '0.16812500 1685837520.jpg'),
+(22, 5, '0.17512900 1685837520.jpg'),
+(24, 6, '0.00799400 1686086052.jpg'),
+(25, 6, '0.01308300 1686086052.jpg'),
+(26, 6, '0.02014200 1686086052.jpg'),
+(27, 6, '0.02705700 1686086052.jpg'),
+(28, 6, '0.03526700 1686086052.jpg'),
+(29, 6, '0.04211000 1686086052.jpg'),
+(30, 7, '0.54492500 1686086703.jpg'),
+(31, 7, '0.55649000 1686086703.jpg'),
+(32, 7, '0.56797800 1686086703.jpg'),
+(33, 7, '0.57952700 1686086703.jpg'),
+(34, 7, '0.59008100 1686086703.jpg'),
+(35, 7, '0.60032800 1686086703.jpg'),
+(36, 8, '0.15357100 1686086975.jpg'),
+(37, 8, '0.15790600 1686086975.jpg'),
+(38, 8, '0.16416700 1686086975.jpg'),
+(39, 8, '0.17044800 1686086975.jpg'),
+(40, 8, '0.17521800 1686086975.jpg'),
+(41, 8, '0.18086500 1686086975.jpg'),
+(42, 9, '0.14590600 1686087463.jpg'),
+(43, 9, '0.15348300 1686087463.jpg'),
+(44, 9, '0.16225200 1686087463.jpg'),
+(45, 9, '0.17052800 1686087463.jpg'),
+(46, 9, '0.17757300 1686087463.jpg'),
+(47, 9, '0.18666500 1686087463.jpg'),
+(48, 9, '0.19308900 1686087463.jpg');
 
 -- --------------------------------------------------------
 
@@ -75,28 +128,26 @@ INSERT INTO `agen` (`Id_agen`, `Nama_agen`, `Jenis_kelamin`, `umur`, `Alamat_age
 --
 
 CREATE TABLE `penjualan` (
-  `Id_penjualan` int(11) NOT NULL,
-  `Id_properti` int(11) NOT NULL,
-  `Id_agen` int(11) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `nik` varchar(50) NOT NULL,
-  `alamat` varchar(50) NOT NULL,
-  `no_tlp` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `tgl_pesan` date NOT NULL,
-  `tgl_selesai` date NOT NULL,
-  `Jumlah_dp` int(11) NOT NULL,
-  `Sisa_bayar` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_penjualan` int NOT NULL COMMENT 'Primary key ',
+  `id_properti` int NOT NULL COMMENT 'Foreign key untuk data properti yang dibeli',
+  `id_agen` int NOT NULL COMMENT 'Foreign key untuk data agen yang menangani',
+  `nama` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nama pembeli',
+  `nik` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'NIK pembeli',
+  `alamat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Alamat pembeli',
+  `no_telp` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nomor telepon pembeli',
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Email pembeli',
+  `tgl_pesan` date NOT NULL COMMENT 'Tanggal pemesanan properti',
+  `tgl_selesai` date NOT NULL COMMENT 'Tanggal selesai (Jika rumah yang dipesan dalam pembangunan)',
+  `jumlah_dp` int NOT NULL COMMENT 'Jumlah pembayaran dimuka',
+  `sisa_bayar` int DEFAULT NULL COMMENT 'Jumlah sisa uang yang harus dibayar'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `penjualan`
 --
 
-INSERT INTO `penjualan` (`Id_penjualan`, `Id_properti`, `Id_agen`, `nama`, `nik`, `alamat`, `no_tlp`, `email`, `tgl_pesan`, `tgl_selesai`, `Jumlah_dp`, `Sisa_bayar`) VALUES
-(1, 2, 3, 'Bobi', '3578764892756378', 'Jl. Rungkut no 1, Surabaya', '085383272986', 'Bobi123@gmail.com', '2022-05-11', '2022-08-20', 300000000, 500000000),
-(2, 4, 2, 'Niken', '3647582649374896', 'Jl. Segaran no. 1,  Depok.', '0864728465378', 'niken123@gmail.com', '2022-03-10', '2022-09-22', 500000000, 500000000),
-(3, 3, 3, 'Lola', '3647593857604957', 'Jl. Rungkut no 99, Surabaya', '089648573947', 'lola123@gmail.com', '2023-01-02', '2023-04-04', 400000000, 350000000);
+INSERT INTO `penjualan` (`id_penjualan`, `id_properti`, `id_agen`, `nama`, `nik`, `alamat`, `no_telp`, `email`, `tgl_pesan`, `tgl_selesai`, `jumlah_dp`, `sisa_bayar`) VALUES
+(5, 2, 4, 'Kevin Iansyah', '3516092002030001', 'RT. 003 RW. 003 Dsn. Jani, Ds. Segunung, Kec. Dlanggu, Kab. Mojokerto', '085815787906', 'keviniansyah04@gmail.com', '2023-06-01', '2023-06-01', 1000000000, 0);
 
 -- --------------------------------------------------------
 
@@ -105,35 +156,39 @@ INSERT INTO `penjualan` (`Id_penjualan`, `Id_properti`, `Id_agen`, `nama`, `nik`
 --
 
 CREATE TABLE `properti` (
-  `Id_properti` int(11) NOT NULL,
-  `Id_agen` int(11) NOT NULL,
-  `nama_properti` varchar(50) NOT NULL,
-  `tipe_properti` varchar(50) NOT NULL,
-  `deskripsi` longtext NOT NULL,
-  `alamat` varchar(50) NOT NULL,
-  `kota` varchar(50) NOT NULL,
-  `provinsi` varchar(50) NOT NULL,
-  `luas_bangunan` int(11) NOT NULL,
-  `kamar_tidur` int(11) NOT NULL,
-  `kamar_mandi` int(11) NOT NULL,
-  `dapur` int(11) NOT NULL,
-  `ruang_keluarga` int(11) NOT NULL,
-  `balkon` int(11) NOT NULL,
-  `harga` int(11) NOT NULL,
-  `status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_properti` int NOT NULL COMMENT 'Primary key',
+  `id_agen` int NOT NULL COMMENT 'Foreign key agen yang menangani penjualan properti',
+  `nama_properti` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Nama properti',
+  `tipe_properti` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Tipe properti (rumah, apartemen, rumah ruko, villa)',
+  `deskripsi` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Deskripsi yang menggambarkan ringkasan property',
+  `alamat` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Alamat properti',
+  `kota` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Kota properti',
+  `provinsi` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Provinsi properti',
+  `luas_bangunan` int NOT NULL COMMENT 'Luas bangunan properti',
+  `kamar_tidur` int NOT NULL COMMENT 'Jumlah kamar tidur',
+  `kamar_mandi` int NOT NULL COMMENT 'Jumlah kamar mandi',
+  `dapur` int NOT NULL COMMENT 'Jumlah dapur',
+  `ruang_keluarga` int NOT NULL COMMENT 'Jumlah ruang keluarga',
+  `balkon` int NOT NULL COMMENT 'Jumlah balkon',
+  `harga` int NOT NULL COMMENT 'Harga jual properti',
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT 'Status jual properti (avaible/sold out)',
+  `gambar_1` blob COMMENT 'Gambar properti',
+  `gambar_2` blob COMMENT 'Gambar properti',
+  `gambar_3` blob COMMENT 'Gambar properti'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Dumping data for table `properti`
 --
 
-INSERT INTO `properti` (`Id_properti`, `Id_agen`, `nama_properti`, `tipe_properti`, `deskripsi`, `alamat`, `kota`, `provinsi`, `luas_bangunan`, `kamar_tidur`, `kamar_mandi`, `dapur`, `ruang_keluarga`, `balkon`, `harga`, `status`) VALUES
-(1, 1, 'Tipe A1', 'Rumah', 'Pondasi : Cakar Ayam.\r\n\r\nStruktur : Beton Bertulang.\r\n\r\nPintu : Pintu Solid & Taekwood, Kusen Alumunium.\r\n\r\nLantai : Lantai Granit 60x60, Kamar Mandi Keramik 40x40/25x40.\r\n\r\nSanitari : TOTO/Setara.\r\n\r\nTaman : Rumput.\r\n\r\nAtap : Rangka Baja Ringan, Genteng beton, Genteng Metal.\r\n\r\nDinding : Bata Ringan, Plester Aci, Cat Tekstur, Bata Tempel.\r\n\r\nSumber Air PDAM.\r\n\r\nJendela Alumunium Alexandria/Setara.', 'Jl. Penjaringna no. 1,  Depok.', 'Kota Depok', 'Jawa Barat', 77, 3, 2, 2, 1, 1, 800000000, 'Available'),
-(2, 2, 'Tipe A2', 'Rumah', 'Deskripsi :\r\n- Pondasi Batu Kali\r\n\r\n- Struktur Beton Bertulang\r\n\r\n- Besi 10 Ulir Full\r\n\r\n- Hebel (Bata Ringan)\r\n\r\n- Granite 60 x 60\r\n\r\n- Closet Duduk (TOTO)\r\n\r\n- Carport Rabat Beton\r\n\r\n- Kusen Alumunium Full\r\n\r\n- Toren Pinguin\r\n\r\n- Rangka Atap Baja Ringan\r\n\r\n- Genteng Beton M Class\r\n\r\n- Listrik 2200 Watt\r\n\r\n- Air Zet Pump\r\n\r\n- Pintu Meranti Oven\r\n\r\n- Pasir Rangkas No 1\r\n\r\n- Semen Gresik', 'Jl. Cileunyi no. 2, Bandung', 'Kota Bandung', 'Jawa Barat', 78, 3, 2, 1, 1, 1, 750000000, 'Available'),
-(3, 3, 'Tipe A3', 'Rumah', 'Deskripsi :\r\nSTRUKTUR : - Pondasi batu kali - Footplat / cakar aya, - Sloof, kolom, balok, ring balok beton bertulang\r\n\r\nLANTAI : - Keramik lantai teras, kamar mandi 50cm x 50cm EX.Standar - Keramik lantai ruang tamu dan kamar tidur 60cm x 60cm ex.stara garuda - Lantai tangga vinyl taco\r\n\r\nDINDING : - Dinding interior & eksterior bata hebel finishing plester acid an cat - Keramik dinding kamar mandi 25cm x 40cm ex.standar - Fasad kombinasi cat dan kisi kisi di cat\r\n\r\nPINTU DAN JENDELA : - Kusen pintu dan jendela alumunium - Pintu utama engineering wood rangka kayu meranti - Pintu kamar double tripleks rangka kayu meranti - Pintu kamar mandi PVC\r\n\r\nPLAFOND : - Rangka plafond besi hollow - Penutup plafond gypsum\r\n\r\nATAP : - Rangka atap baja ringan - Penutup atap genteng flat beton\r\n\r\nCAT : - Interior dan plafond ex.Catylac - Exterior ex.Catylac (plus WEATHERSHIELD)\r\n\r\nLISTRIK : - Daya listrik 2200W\r\n\r\nSANITARI : - Floor drain ex.lokal - Closet duduk ex. American standard\r\n\r\nLAIN-LAIN : - Kedalamn sumur bor 25m', 'Jl. Rungkut no 135, Surabaya', 'Surabaya', 'Jawa Timur', 63, 2, 2, 1, 1, 1, 650000000, 'Available'),
-(4, 4, 'Tipe First Class 1', 'Rumah', 'Deskripsi :\r\nDinding : Bata Ringan Finishing Plester + Aci + Cat\r\n\r\nRangka Atap : Baja Ringan\r\n\r\nAtap : Alderon/Setara\r\n\r\nPondasi : Cakar Ayam, Pasangan Batu Kali, Slof Beton\r\n\r\nInstalasi Listrik : 1.300 - 2.200 Watt\r\n\r\nInstalasi Air : Jet Pump\r\n\r\nLantai Ruangan Utama : Granite Tile 60x60 (Homogenous)', 'Jl. Pakuwon Indah no 3, Surabaya', 'Surabaya', 'Jawa Timur', 100, 4, 3, 2, 2, 2, 1000000000, 'Available'),
-(5, 5, 'Tipe First Class 2', 'Rumah', 'Deskripsi :\r\nPONDASI : Batu kali, Kolom & Balok : Beton Bertulang\r\n\r\nDINDING : Interior : Pasangan Bata Ringan, diplester, di aci dan dicat\r\n\r\nLANTAI : Ruang utama & Kamar : Homogeneous Tile 60X60cm\r\n\r\nTERAS : Keramik 40X40cm Kamar mandi : Lantai Keramik 20X20cm\r\n\r\nDINDING : Keramik 20X25cm Dinding Dapur : Keramik 20X25cm\r\n\r\nPLAFOND : Rangka Hollow, Gypsum Board\r\n\r\nRANGKA ATAP : Baja Ringan; Genteng Spandek/Metal\r\n\r\nKUSEN-PINTU Pintu Utama : Solid Engineering; Pintu Kamar : Double Triplek, Kamar Mandi : PVC\r\n\r\nJARINGAN AIR BERSIH Air : Pompa Listrik; Closet : Toto/Setara\r\n\r\nLISTRIK : 2200 Watt\r\n\r\n', 'Jl. Sawangan no. 1,  Jakarta.', 'Kota Jakarta', 'Jakarta', 80, 3, 2, 1, 2, 2, 950000000, 'Available'),
-(6, 1, 'Tipe First Class 3', 'Rumah', 'Spec :\r\n• LT 96 M²\r\n• LB 80 M²\r\n• KT 3\r\n• KM 2\r\n• Listrik 2.200 Watt\r\n• Jet Pump\r\n• SHM\r\n• 1 lantai\r\n• Carport 1Mobil\r\n• Hadap Selatan\r\n• Bebas Banjir', 'Jl. Rungkut no 6, Surabaya', 'Surabaya', 'Jawa Timur', 80, 3, 2, 1, 1, 1, 850000000, 'Available');
+INSERT INTO `properti` (`id_properti`, `id_agen`, `nama_properti`, `tipe_properti`, `deskripsi`, `alamat`, `kota`, `provinsi`, `luas_bangunan`, `kamar_tidur`, `kamar_mandi`, `dapur`, `ruang_keluarga`, `balkon`, `harga`, `status`, `gambar_1`, `gambar_2`, `gambar_3`) VALUES
+(2, 4, 'Tipe A01', 'Minimalis', 'Rumah yang tersedia ini memiliki luas 225m2 yang terdiri dari 4 kamar tidur, 2 kamar mandi, 2 balkon, 1 dapur, dan 1 ruang keluarga. Dengan luas yang cukup besar, rumah ini memberikan ruang yang nyaman bagi keluarga untuk beraktivitas dan beristirahat. Setiap kamar tidur telah dilengkapi dengan kenyamanan yang diinginkan, sedangkan kamar mandi yang tersedia memudahkan keluarga untuk berbagi fasilitas dengan mudah. Terdapat 2 balkon yang dapat dimanfaatkan untuk bersantai atau menikmati pemandangan sekitar rumah. Dapur yang luas dan dilengkapi dengan peralatan yang lengkap akan memudahkan Anda dalam menyiapkan hidangan untuk keluarga. Sementara ruang keluarga yang lapang dan nyaman akan menjadi tempat berkumpul bersama keluarga untuk menonton televisi atau bercengkerama.', 'Jl. Untung Suropati No.11', 'Surabaya', 'Jawa Timur', 225, 4, 2, 1, 1, 2, 1000000000, 'Avaible', NULL, NULL, NULL),
+(4, 6, 'Tipe A02', 'Minimalis', 'Rumah modern ini adalah sebuah karya arsitektur yang memadukan keindahan, kenyamanan, dan kepraktisan dalam satu desain yang memukau. Dengan bentuk yang minimalis namun elegan, rumah ini memiliki tampilan luar yang terbuat dari kombinasi material berkualitas tinggi seperti beton, kaca, dan kayu. Ruang dalamnya sangat terang dan lapang, dengan langit-langit tinggi yang memberikan kesan luas. Desain interior yang bersih dan simpel, dengan furnitur modern yang dipilih dengan cermat, menciptakan suasana yang menyenangkan dan nyaman bagi penghuninya. Tidak hanya itu, rumah ini juga dilengkapi dengan teknologi canggih, seperti sistem pengaturan suhu otomatis dan pengoperasian pintu dan jendela secara otomatis. Taman yang indah dan teratur menghiasi halaman depan rumah ini, memberikan suasana segar dan damai. Rumah modern ini benar-benar menjadi tempat ideal untuk hidup dengan gaya hidup kontemporer yang elegan dan fungsional.', 'Jl. Mawar Merah No.10', 'Surabaya', 'Jawa Timur', 225, 4, 2, 1, 1, 3, 2000000000, 'Available', NULL, NULL, NULL),
+(5, 7, 'Tipe A03', 'Minimalis', 'Rumah modern ini adalah sebuah karya arsitektur yang memadukan keindahan, kenyamanan, dan kepraktisan dalam satu desain yang memukau. Dengan bentuk yang minimalis namun elegan, rumah ini memiliki tampilan luar yang terbuat dari kombinasi material berkualitas tinggi seperti beton, kaca, dan kayu. Ruang dalamnya sangat terang dan lapang, dengan langit-langit tinggi yang memberikan kesan luas. Desain interior yang bersih dan simpel, dengan furnitur modern yang dipilih dengan cermat, menciptakan suasana yang menyenangkan dan nyaman bagi penghuninya. Tidak hanya itu, rumah ini juga dilengkapi dengan teknologi canggih, seperti sistem pengaturan suhu otomatis dan pengoperasian pintu dan jendela secara otomatis. Taman yang indah dan teratur menghiasi halaman depan rumah ini, memberikan suasana segar dan damai. Rumah modern ini benar-benar menjadi tempat ideal untuk hidup dengan gaya hidup kontemporer yang elegan dan fungsional.', 'Jl. Jaya Kusuma No.7', 'Surabaya', 'Jawa Timur', 325, 4, 2, 1, 1, 4, 2000000000, 'Available', NULL, NULL, NULL),
+(6, 7, 'Tipe A04', 'Modern', 'Rumah modern ini adalah sebuah karya arsitektur yang memadukan keindahan, kenyamanan, dan kepraktisan dalam satu desain yang memukau. Dengan bentuk yang minimalis namun elegan, rumah ini memiliki tampilan luar yang terbuat dari kombinasi material berkualitas tinggi seperti beton, kaca, dan kayu. Ruang dalamnya sangat terang dan lapang, dengan langit-langit tinggi yang memberikan kesan luas. Desain interior yang bersih dan simpel, dengan furnitur modern yang dipilih dengan cermat, menciptakan suasana yang menyenangkan dan nyaman bagi penghuninya. Tidak hanya itu, rumah ini juga dilengkapi dengan teknologi canggih, seperti sistem pengaturan suhu otomatis dan pengoperasian pintu dan jendela secara otomatis. Taman yang indah dan teratur menghiasi halaman depan rumah ini, memberikan suasana segar dan damai. Rumah modern ini benar-benar menjadi tempat ideal untuk hidup dengan gaya hidup kontemporer yang elegan dan fungsional.', 'Jl. Habibie No 11', 'Surabaya', 'Jawa Timur', 250, 3, 2, 1, 1, 2, 1500000000, 'Available', NULL, NULL, NULL),
+(7, 6, 'Tipe A05', 'Minimalis', 'Rumah modern ini adalah sebuah karya arsitektur yang memadukan keindahan, kenyamanan, dan kepraktisan dalam satu desain yang memukau. Dengan bentuk yang minimalis namun elegan, rumah ini memiliki tampilan luar yang terbuat dari kombinasi material berkualitas tinggi seperti beton, kaca, dan kayu. Ruang dalamnya sangat terang dan lapang, dengan langit-langit tinggi yang memberikan kesan luas. Desain interior yang bersih dan simpel, dengan furnitur modern yang dipilih dengan cermat, menciptakan suasana yang menyenangkan dan nyaman bagi penghuninya. Tidak hanya itu, rumah ini juga dilengkapi dengan teknologi canggih, seperti sistem pengaturan suhu otomatis dan pengoperasian pintu dan jendela secara otomatis. Taman yang indah dan teratur menghiasi halaman depan rumah ini, memberikan suasana segar dan damai. Rumah modern ini benar-benar menjadi tempat ideal untuk hidup dengan gaya hidup kontemporer yang elegan dan fungsional.', 'Jl. Habibie No 13', 'Surabaya', 'Jawa Timur', 250, 3, 2, 1, 1, 2, 1600000000, 'Available', NULL, NULL, NULL),
+(8, 7, 'Tipe A06', 'Modern', 'Rumah modern ini adalah sebuah karya arsitektur yang memadukan keindahan, kenyamanan, dan kepraktisan dalam satu desain yang memukau. Dengan bentuk yang minimalis namun elegan, rumah ini memiliki tampilan luar yang terbuat dari kombinasi material berkualitas tinggi seperti beton, kaca, dan kayu. Ruang dalamnya sangat terang dan lapang, dengan langit-langit tinggi yang memberikan kesan luas. Desain interior yang bersih dan simpel, dengan furnitur modern yang dipilih dengan cermat, menciptakan suasana yang menyenangkan dan nyaman bagi penghuninya. Tidak hanya itu, rumah ini juga dilengkapi dengan teknologi canggih, seperti sistem pengaturan suhu otomatis dan pengoperasian pintu dan jendela secara otomatis. Taman yang indah dan teratur menghiasi halaman depan rumah ini, memberikan suasana segar dan damai. Rumah modern ini benar-benar menjadi tempat ideal untuk hidup dengan gaya hidup kontemporer yang elegan dan fungsional.', 'Jl. Habibie No 12', 'Surabaya', 'Jawa Timur', 280, 4, 2, 1, 1, 2, 1800000000, 'Available', NULL, NULL, NULL),
+(9, 4, 'Tipe A07', 'Modern', 'Rumah modern ini adalah sebuah karya arsitektur yang memadukan keindahan, kenyamanan, dan kepraktisan dalam satu desain yang memukau. Dengan bentuk yang minimalis namun elegan, rumah ini memiliki tampilan luar yang terbuat dari kombinasi material berkualitas tinggi seperti beton, kaca, dan kayu. Ruang dalamnya sangat terang dan lapang, dengan langit-langit tinggi yang memberikan kesan luas. Desain interior yang bersih dan simpel, dengan furnitur modern yang dipilih dengan cermat, menciptakan suasana yang menyenangkan dan nyaman bagi penghuninya. Tidak hanya itu, rumah ini juga dilengkapi dengan teknologi canggih, seperti sistem pengaturan suhu otomatis dan pengoperasian pintu dan jendela secara otomatis. Taman yang indah dan teratur menghiasi halaman depan rumah ini, memberikan suasana segar dan damai. Rumah modern ini benar-benar menjadi tempat ideal untuk hidup dengan gaya hidup kontemporer yang elegan dan fungsional.', 'Jl. Sekar No. 11', 'Surabaya', 'Jawa Timur', 280, 4, 2, 1, 1, 3, 1900000000, 'Available', NULL, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -143,28 +198,35 @@ INSERT INTO `properti` (`Id_properti`, `Id_agen`, `nama_properti`, `tipe_propert
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
-  ADD PRIMARY KEY (`Id_admin`);
+  ADD PRIMARY KEY (`id_admin`) USING BTREE;
 
 --
 -- Indexes for table `agen`
 --
 ALTER TABLE `agen`
-  ADD PRIMARY KEY (`Id_agen`);
+  ADD PRIMARY KEY (`id_agent`) USING BTREE;
+
+--
+-- Indexes for table `gambar_properti`
+--
+ALTER TABLE `gambar_properti`
+  ADD PRIMARY KEY (`id_gambar_properti`) USING BTREE,
+  ADD KEY `fk_to_properti` (`id_properti`) USING BTREE;
 
 --
 -- Indexes for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  ADD PRIMARY KEY (`Id_penjualan`),
-  ADD KEY `Id_properti` (`Id_properti`),
-  ADD KEY `penjualan_ibfk_1` (`Id_agen`);
+  ADD PRIMARY KEY (`id_penjualan`) USING BTREE,
+  ADD KEY `fk_penjualan_to_agen` (`id_agen`) USING BTREE,
+  ADD KEY `fk_penjualan_to_properti` (`id_properti`) USING BTREE;
 
 --
 -- Indexes for table `properti`
 --
 ALTER TABLE `properti`
-  ADD PRIMARY KEY (`Id_properti`),
-  ADD KEY `Id_agen` (`Id_agen`);
+  ADD PRIMARY KEY (`id_properti`) USING BTREE,
+  ADD KEY `fk_to_agen` (`id_agen`) USING BTREE;
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -174,41 +236,54 @@ ALTER TABLE `properti`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `Id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_admin` int NOT NULL AUTO_INCREMENT COMMENT 'Primary key', AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `agen`
 --
 ALTER TABLE `agen`
-  MODIFY `Id_agen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_agent` int NOT NULL AUTO_INCREMENT COMMENT 'Primary key', AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `gambar_properti`
+--
+ALTER TABLE `gambar_properti`
+  MODIFY `id_gambar_properti` int NOT NULL AUTO_INCREMENT COMMENT 'Primary key', AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  MODIFY `Id_penjualan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_penjualan` int NOT NULL AUTO_INCREMENT COMMENT 'Primary key ', AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `properti`
 --
 ALTER TABLE `properti`
-  MODIFY `Id_properti` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_properti` int NOT NULL AUTO_INCREMENT COMMENT 'Primary key', AUTO_INCREMENT=12;
 
 --
 -- Constraints for dumped tables
 --
 
 --
+-- Constraints for table `gambar_properti`
+--
+ALTER TABLE `gambar_properti`
+  ADD CONSTRAINT `fk_to_properti` FOREIGN KEY (`id_properti`) REFERENCES `properti` (`id_properti`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
 -- Constraints for table `penjualan`
 --
 ALTER TABLE `penjualan`
-  ADD CONSTRAINT `penjualan_ibfk_1` FOREIGN KEY (`Id_agen`) REFERENCES `agen` (`Id_agen`);
+  ADD CONSTRAINT `fk_penjualan_to_agen` FOREIGN KEY (`id_agen`) REFERENCES `agen` (`id_agent`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `fk_penjualan_to_properti` FOREIGN KEY (`id_properti`) REFERENCES `properti` (`id_properti`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 --
 -- Constraints for table `properti`
 --
 ALTER TABLE `properti`
-  ADD CONSTRAINT `properti_ibfk_1` FOREIGN KEY (`Id_agen`) REFERENCES `agen` (`Id_agen`);
+  ADD CONSTRAINT `fk_to_agen` FOREIGN KEY (`id_agen`) REFERENCES `agen` (`id_agent`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
